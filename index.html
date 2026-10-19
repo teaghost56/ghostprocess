@@ -1,0 +1,533 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Ghostprocess · Automatisation &amp; IA pour PME tunisiennes</title>
+  <meta name="description" content="Ghostprocess automatise les tâches répétitives des PME tunisiennes : relances d'impayés, assistant WhatsApp et Instagram en derja, prise de rendez-vous, suivi des voyageurs, tri des e-mails.">
+  <meta name="theme-color" content="#0c110d">
+  <link rel="canonical" href="https://ghostprocess.net/">
+
+  <!-- Partage sur les réseaux (WhatsApp, Facebook, LinkedIn) -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fr_TN">
+  <meta property="og:site_name" content="Ghostprocess">
+  <meta property="og:title" content="Ghostprocess · Vos process tournent tout seuls">
+  <meta property="og:description" content="Relances d'impayés, assistant WhatsApp en derja, rendez-vous, suivi des voyageurs : en place en quelques jours, sur devis personnalisé.">
+  <meta property="og:url" content="https://ghostprocess.net/">
+  <meta property="og:image" content="https://ghostprocess.net/assets/img/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+
+  <!-- Applique le thème choisi avant l'affichage (évite un flash) -->
+  <script>
+    document.documentElement.classList.add("js");
+    try { var t = localStorage.getItem("gp-theme"); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
+
+  <!-- Données structurées pour Google -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Ghostprocess",
+    "url": "https://ghostprocess.net/",
+    "email": "team@ghostprocess.net",
+    "areaServed": "TN",
+    "address": { "@type": "PostalAddress", "addressLocality": "Tunis", "addressCountry": "TN" },
+    "description": "Automatisation et assistants IA pour les PME tunisiennes.",
+    "sameAs": ["https://www.instagram.com/ghost_process/", "https://www.linkedin.com/company/ghostprocess/"]
+  }
+  </script>
+</head>
+<body>
+
+<!-- ===== Icônes (réutilisées avec <use href="#i-…">) ===== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-cash" viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></symbol>
+  <symbol id="i-plane" viewBox="0 0 24 24"><path d="M17.8 19.2 16 11l3.5-3.5A2.1 2.1 0 0 0 16.5 4.5L13 8 4.8 6.2l-1.3 1.3L10 11l-3 3H4l-1 1 3 2 2 3 1-1v-3l3-3 3.5 6.5z"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></symbol>
+  <symbol id="i-pen" viewBox="0 0 24 24"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></symbol>
+  <symbol id="i-tool" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.8-3.8a6 6 0 0 1-7.9 7.9l-6.9 6.9a2.1 2.1 0 0 1-3-3l6.9-6.9a6 6 0 0 1 7.9-7.9z"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-box" viewBox="0 0 24 24"><path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 3v18h18M7 15l4-4 3 3 5-6"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></symbol>
+  <symbol id="i-key" viewBox="0 0 24 24"><circle cx="7.5" cy="15.5" r="5.5"/><path d="m21 2-9.6 9.6M15.5 7.5l3 3L22 7l-3-3"/></symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8S1 12 1 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+  <symbol id="i-scale" viewBox="0 0 24 24"><path d="M12 3v18M5 7h14M5 7l-3 7a4 4 0 0 0 6 0zM19 7l-3 7a4 4 0 0 0 6 0z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></symbol>
+  <symbol id="i-wa" viewBox="0 0 24 24"><path d="M3 21l1.6-4.8A8.5 8.5 0 1 1 8 19.6z"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+  <symbol id="i-arrow-up" viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></symbol>
+  <symbol id="i-spark" viewBox="0 0 24 24"><path d="M11 3l1.8 4.7L17.5 9.5l-4.7 1.8L11 16l-1.8-4.7L4.5 9.5l4.7-1.8z"/><path d="M19 14l.8 2.2L22 17l-2.2.8L19 20l-.8-2.2L16 17l2.2-.8z"/></symbol>
+  <symbol id="i-send" viewBox="0 0 24 24"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4z"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.9 1.9 0 0 0 3.4 0"/></symbol>
+  <symbol id="i-warn" viewBox="0 0 24 24"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></symbol>
+  <symbol id="i-check-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5"/><path d="m8 12.3 2.7 2.7L16.2 9.5"/></symbol>
+  <symbol id="i-table" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M9 4v16"/></symbol>
+</svg>
+
+<a class="skip" href="#main">Aller au contenu</a>
+
+<!-- ===================== EN-TÊTE ===================== -->
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Ghostprocess, retour en haut">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3C9.4 3 5 7.8 5 14v14.5l3.6-2.6 3.7 2.6 3.7-2.6 3.7 2.6 3.7-2.6 3.6 2.6V14C27 7.8 22.6 3 16 3z" fill="var(--accent)"/><circle cx="12" cy="14" r="2.1" fill="var(--on-accent)"/><circle cx="20" cy="14" r="2.1" fill="var(--on-accent)"/></svg>
+      Ghostprocess
+    </a>
+    <nav class="main" aria-label="Navigation principale">
+      <a href="#cas">Cas d'usage</a>
+      <a href="#solutions">Solutions</a>
+      <a href="#methode">Méthode</a>
+      <a href="#pilote">Programme pilote</a>
+      <a href="#faq">Questions</a>
+    </nav>
+    <div class="top-right">
+      <button class="tbtn" id="themeBtn" type="button" aria-label="Changer de thème"><svg class="icon" aria-hidden="true"><use href="#i-moon"/></svg></button>
+      <a class="nav-cta" href="#contact">Parlons de votre projet</a>
+      <button class="tbtn menu-btn" id="menuBtn" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="drawer"><svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg></button>
+    </div>
+  </div>
+</header>
+<nav class="drawer" id="drawer" aria-label="Navigation mobile" hidden>
+  <a href="#cas">Cas d'usage</a>
+  <a href="#solutions">Solutions</a>
+  <a href="#methode">Méthode</a>
+  <a href="#pilote">Programme pilote</a>
+  <a href="#faq">Questions</a>
+  <a class="nav-cta" href="#contact">Parlons de votre projet</a>
+</nav>
+
+<main id="main">
+  <span id="top"></span>
+
+  <!-- ===================== HERO ===================== -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow">Automatisation &amp; IA pour PME tunisiennes</span>
+        <h1>Vos process tournent <em>tout seuls</em>. Vous, vous avancez.</h1>
+        <p class="lead">Ghostprocess installe les assistants invisibles qui relancent vos impayés, répondent à vos clients sur WhatsApp, prennent vos rendez-vous et suivent chaque dossier, en quelques jours, avec les outils que vous utilisez déjà.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#contact">Réserver un appel découverte</a>
+          <a class="btn btn-ghost" href="#cas">Voir ce qu'on automatise</a>
+        </div>
+        <div class="chips">
+          <span><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> En place en quelques jours</span>
+          <span><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Français, arabe et derja</span>
+          <span><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg> Devis personnalisé</span>
+        </div>
+      </div>
+
+      <!-- Console de démonstration : le contenu est dans assets/js/demos.js -->
+      <div class="console" aria-label="Démonstration : ce que font nos assistants">
+        <div class="tabs" role="tablist" aria-label="Choisir une démonstration">
+          <button class="tab" role="tab" id="tab-impayes" data-demo="impayes" aria-selected="true" aria-controls="demo">Impayés</button>
+          <button class="tab" role="tab" id="tab-rdv" data-demo="rdv" aria-selected="false" aria-controls="demo">Rendez-vous</button>
+          <button class="tab" role="tab" id="tab-insta" data-demo="insta" aria-selected="false" aria-controls="demo">Boutique</button>
+          <button class="tab" role="tab" id="tab-voyage" data-demo="voyage" aria-selected="false" aria-controls="demo">Agence de voyage</button>
+        </div>
+        <div class="panel" id="demo" role="tabpanel" aria-live="polite"></div>
+        <div class="console-foot"><span>Démonstration avec des données fictives</span><button class="replay" id="replay" type="button">Rejouer</button></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PREUVES ===================== -->
+  <div class="proof">
+    <div class="wrap stats">
+      <div class="stat"><b>3 à 5 j</b><span>pour qu'une automatisation tourne</span></div>
+      <div class="stat"><b>24h/24</b><span>vos assistants ne prennent pas de pause</span></div>
+      <div class="stat"><b>0</b><span>engagement de durée, abonnement mensuel</span></div>
+      <div class="stat"><b>1</b><span>interlocuteur, joignable sur WhatsApp</span></div>
+    </div>
+    <div class="wrap tools">
+      <p>Nous connectons ce que vous utilisez déjà</p>
+      <span class="tool">WhatsApp</span><span class="tool">Gmail</span><span class="tool">Outlook</span><span class="tool">Excel</span><span class="tool">Google Sheets</span><span class="tool">Instagram</span><span class="tool">Facebook</span><span class="tool">Google Agenda</span><span class="tool">Google Drive</span>
+    </div>
+  </div>
+
+  <!-- ===================== CAS D'USAGE ===================== -->
+  <!-- Pour ajouter un cas : copiez un <article class="case">, data-s = secteurs séparés par des espaces -->
+  <section id="cas">
+    <div class="wrap">
+      <div class="head reveal">
+        <span class="eyebrow">Cas d'usage</span>
+        <h2>Ce qu'on automatise pour les entreprises comme la vôtre</h2>
+        <p class="lead">Choisissez votre secteur. Les cas marqués « prêt » ont déjà une démo fonctionnelle ; les autres sont construits sur mesure.</p>
+      </div>
+      <div class="filters" role="group" aria-label="Filtrer par secteur">
+        <button class="filter" type="button" data-f="all" aria-pressed="true">Tous</button>
+        <button class="filter" type="button" data-f="dist" aria-pressed="false">Distribution</button>
+        <button class="filter" type="button" data-f="ecom" aria-pressed="false">Boutiques en ligne</button>
+        <button class="filter" type="button" data-f="serv" aria-pressed="false">Services</button>
+        <button class="filter" type="button" data-f="compta" aria-pressed="false">Cabinets comptables</button>
+        <button class="filter" type="button" data-f="voyage" aria-pressed="false">Voyage</button>
+        <button class="filter" type="button" data-f="beaute" aria-pressed="false">Santé &amp; beauté</button>
+      </div>
+      <div class="cases" id="cases">
+        <article class="case" data-s="dist serv compta"><div class="ci"><svg class="icon" aria-hidden="true"><use href="#i-cash"/></svg></div><h3>Relance des impayés</h3><p>Factures, chèques et traites relancés sur WhatsApp ou par e-mail, alerte d'appel au bon moment.</p><span class="st st-ready">prêt</span></article>
+        <article class="case" data-s="beaute serv"><div class="ci"><svg class="icon" aria-hidden="true"><use href="#i-cal"/></svg></div><h3>Rendez-vous sur WhatsApp</h3><p>Le client réserve, déplace ou annule par message ; confirmation et rappel la veille.</p><span class="st st-ready">prêt</span></article>
+        <article class="case" data-s="ecom beaute serv"><div class="ci"><svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg></div><h3>Réponses clients 24h/24</h3><p>Une IA répond en derja, arabe ou français à partir de vos infos, et capte chaque prospect.</p><span class="st st-ready">prêt</span></article>
+        <article class="case" data-s="voyage"><div class="ci"><svg class="icon" aria-hidden="true"><use href="#i-plane"/></svg></div><h3>Parcours voyageur</h3><p>Questions sur les offres, échéances, documents, infos de départ et avis au retour.</p><span class="st st-ready">prêt</span></article>
+        <article class="case" data-s="dist ecom serv compta voyage beaute"><div class="ci"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg></div><h3>Tri des e-mails</h3><p>Chaque e-mail classé, résumé, et un brouillon de réponse prêt pour les demandes clients.</p><span class="st st-ready">prêt</span></article>
+        <article class="case" data-s="dist ecom serv compta voyage beaute"><div class="ci"><svg class="icon" aria-hidden="true"><use href="#i-sun"/></svg></div><h3>Brief du gérant</h3><p>Chaque matin : encaissements, retards, rendez-vous et messages importants en un seul message.</p><span class="st st-ready">prêt</span></article>
+        <article class="case" data-s="dist serv voyage beaute"><div class="ci"><svg class="icon" aria-hidden="true"><use href="#i-pen"/></svg></div><h3>Relance des prospects</h3><p>Les demandes restées sans suite sont relancées une fois, poliment, au bon moment.</p><span class="st st-ready">prêt</span></article>
+        <article class="case" data-s="compta voyage"><div class="ci"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg></div><h3>Collecte de documents</h3><p>Pièces comptables ou passeports réclamés et suivis jusqu'au dossier complet.</p><span class="st st-custom">sur mesure</span></article>
+        <article class="case" data-s="ecom"><div class="ci"><svg class="icon" aria-hidden="true"><use href="#i-box"/></svg></div><h3>Confirmation des commandes</h3><p>Chaque commande en paiement à la livraison confirmée par message avant l'envoi.</p><span class="st st-custom">sur mesure</span></article>
+        <article class="case" data-s="ecom beaute voyage"><div class="ci"><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg></div><h3>Demandes d'avis Google</h3><p>Un message après chaque achat ou séjour, avec le lien direct vers vos avis.</p><span class="st st-ready">prêt</span></article>
+        <article class="case" data-s="ecom beaute"><div class="ci"><svg class="icon" aria-hidden="true"><use href="#i-pen"/></svg></div><h3>Publications réseaux sociaux</h3><p>Idées, textes et hashtags de la semaine préparés pour validation.</p><span class="st st-ready">prêt</span></article>
+        <article class="case" data-s="dist ecom"><div class="ci"><svg class="icon" aria-hidden="true"><use href="#i-chart"/></svg></div><h3>Rapports hebdomadaires</h3><p>Ventes, impayés et commandes résumés chaque lundi, sans ouvrir Excel.</p><span class="st st-custom">sur mesure</span></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== MISSION ===================== -->
+  <section class="mission alt">
+    <div class="wrap">
+      <p class="quote reveal">On ne vend pas de la technologie. On vous rend <em>des heures</em> et <em>des dinars</em>.</p>
+      <ul class="ticks reveal">
+        <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span><b>Pensé pour la Tunisie.</b> Chèques, traites, paiement à la livraison, messages en derja : nos automatisations parlent votre réalité.</span></li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span><b>Avec vos outils.</b> Pas de nouveau logiciel à apprendre : votre fichier Excel ou Google Sheets, votre WhatsApp, votre messagerie.</span></li>
+        <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg><span><b>Un humain derrière.</b> L'automatisation fait le répétitif ; votre équipe garde les décisions et les relations.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===================== AVANT / APRÈS ===================== -->
+  <!-- Cartes « problème » (orange) recouvertes par les cartes « solution » (vertes).
+       Animation pilotée par le défilement (main.js) ; positions en CSS (styles.css, « Avant / après »). -->
+  <section class="pb" id="avant-apres" aria-labelledby="pb-title">
+    <div class="wrap">
+      <div class="head center reveal">
+        <span class="eyebrow">Avant / après</span>
+        <h2 id="pb-title">Ce qui vous freine aujourd'hui, ce que Ghostprocess change</h2>
+        <p class="lead">Quatre situations que vivent la plupart des PME tunisiennes, et la solution qui s'en charge.</p>
+      </div>
+      <ul class="pairs">
+        <li class="pair">
+          <div class="pcard problem">
+            <span class="plabel"><svg class="icon" aria-hidden="true"><use href="#i-warn"/></svg>Problème</span>
+            <h3>Des messages clients sans réponse</h3>
+            <p>Le soir et le week-end, les questions sur WhatsApp et Instagram attendent, et le client va voir ailleurs.</p>
+          </div>
+          <div class="pcard solution">
+            <span class="plabel"><svg class="icon" aria-hidden="true"><use href="#i-check-circle"/></svg>Solution · GhostReception</span>
+            <h3>Une réponse immédiate, à toute heure</h3>
+            <p>En derja, arabe ou français, d'après vos informations ; chaque prospect est noté.</p>
+          </div>
+        </li>
+        <li class="pair">
+          <div class="pcard problem">
+            <span class="plabel"><svg class="icon" aria-hidden="true"><use href="#i-warn"/></svg>Problème</span>
+            <h3>Un agenda tenu à la main</h3>
+            <p>Des allers-retours pour trouver un créneau, des oublis, des rendez-vous manqués.</p>
+          </div>
+          <div class="pcard solution">
+            <span class="plabel"><svg class="icon" aria-hidden="true"><use href="#i-check-circle"/></svg>Solution · GhostBook Pro</span>
+            <h3>Vos clients réservent seuls sur WhatsApp</h3>
+            <p>Créneaux libres vérifiés, confirmation immédiate, rappel la veille.</p>
+          </div>
+        </li>
+        <li class="pair">
+          <div class="pcard problem">
+            <span class="plabel"><svg class="icon" aria-hidden="true"><use href="#i-warn"/></svg>Problème</span>
+            <h3>Une boîte e-mail qui déborde</h3>
+            <p>Les demandes clients se perdent entre factures, fournisseurs et newsletters.</p>
+          </div>
+          <div class="pcard solution">
+            <span class="plabel"><svg class="icon" aria-hidden="true"><use href="#i-check-circle"/></svg>Solution · GhostMail</span>
+            <h3>Des e-mails triés et résumés</h3>
+            <p>Brouillons de réponse prêts, et l'essentiel de la journée en un message.</p>
+          </div>
+        </li>
+        <li class="pair">
+          <div class="pcard problem">
+            <span class="plabel"><svg class="icon" aria-hidden="true"><use href="#i-warn"/></svg>Problème</span>
+            <h3>Des impayés relancés au téléphone</h3>
+            <p>Factures, chèques et traites suivis dans un fichier, et des relances oubliées.</p>
+          </div>
+          <div class="pcard solution">
+            <span class="plabel"><svg class="icon" aria-hidden="true"><use href="#i-check-circle"/></svg>Solution · GhostCollect</span>
+            <h3>Des rappels envoyés au bon moment</h3>
+            <p>Sur WhatsApp ou par e-mail, avec une alerte quand il faut appeler.</p>
+          </div>
+        </li>
+      </ul>
+      <div class="pb-actions" id="pbActions">
+        <span>Faites défiler : les solutions prennent le dessus.</span>
+        <button class="replay" type="button" id="pbReplay" aria-controls="avant-apres">Rejouer</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SOLUTIONS ===================== -->
+  <!-- data-besoin pré-remplit le formulaire de contact. -->
+  <section id="solutions">
+    <div class="wrap">
+      <div class="head reveal">
+        <span class="eyebrow">Nos solutions</span>
+        <h2>Six solutions prêtes, adaptées à votre entreprise</h2>
+        <p class="lead">Chaque solution est adaptée à votre activité et à vos outils. Contactez-nous pour recevoir un devis personnalisé.</p>
+      </div>
+
+      <!-- Schéma animé : le contenu de chaque solution est dans assets/js/flows.js -->
+      <div class="flow reveal" id="flow">
+        <div class="flow-bar">
+          <span class="eyebrow">Comment ça marche</span>
+          <div class="flow-tabs" role="tablist" aria-label="Choisir une solution à illustrer">
+          <button class="flow-tab" role="tab" id="ft-collect" data-flow="collect" aria-selected="true" aria-controls="flow-panel">GhostCollect</button>
+          <button class="flow-tab" role="tab" id="ft-book" data-flow="book" aria-selected="false" aria-controls="flow-panel" tabindex="-1">GhostBook Pro</button>
+          <button class="flow-tab" role="tab" id="ft-reception" data-flow="reception" aria-selected="false" aria-controls="flow-panel" tabindex="-1">GhostReception</button>
+          <button class="flow-tab" role="tab" id="ft-travel" data-flow="travel" aria-selected="false" aria-controls="flow-panel" tabindex="-1">GhostTravel</button>
+          <button class="flow-tab" role="tab" id="ft-mail" data-flow="mail" aria-selected="false" aria-controls="flow-panel" tabindex="-1">GhostMail</button>
+          <button class="flow-tab" role="tab" id="ft-custom" data-flow="custom" aria-selected="false" aria-controls="flow-panel" tabindex="-1">Sur mesure</button>
+          </div>
+        </div>
+        <div class="flow-panel" id="flow-panel" role="tabpanel" aria-labelledby="ft-collect" tabindex="0">
+          <p class="flow-title">GhostCollect · relance des impayés</p>
+          <div class="flow-steps" role="list"></div>
+          <div class="flow-foot">
+            <span class="flow-disc">Illustration simplifiée du principe : aucune donnée n'est traitée sur cette page.</span>
+            <span class="flow-actions"><button class="replay" type="button" id="flowReplay">Rejouer</button><a class="link" href="#contact" id="flowCta" data-besoin="impayes">Demander GhostCollect →</a></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="services stagger reveal">
+        <article class="svc featured" data-flow="collect">
+          <div class="svc-top"><div class="si"><svg class="icon" aria-hidden="true"><use href="#i-cash"/></svg></div><button class="svc-more" type="button" data-flow-open="collect" aria-controls="flow-panel" aria-pressed="false">Voir le fonctionnement <span aria-hidden="true">→</span></button></div>
+          <span class="tag">GhostCollect</span>
+          <h3>Relances d'impayés</h3>
+          <p>Faites-vous payer plus vite sans passer vos journées au téléphone.</p>
+          <ul><li>Factures, chèques et traites</li><li>WhatsApp, e-mail en secours</li><li>Alerte « client à appeler »</li><li>Point des impayés du lundi</li></ul>
+          <div class="foot"><p class="ask">Tarif sur devis personnalisé</p><a class="link" href="#contact" data-besoin="impayes">Demander →</a></div>
+        </article>
+        <article class="svc" data-flow="book">
+          <div class="svc-top"><div class="si"><svg class="icon" aria-hidden="true"><use href="#i-cal"/></svg></div><button class="svc-more" type="button" data-flow-open="book" aria-controls="flow-panel" aria-pressed="false">Voir le fonctionnement <span aria-hidden="true">→</span></button></div>
+          <span class="tag">GhostBook Pro</span>
+          <h3>Rendez-vous sur WhatsApp</h3>
+          <p>Vos clients réservent seuls, même à 23 h. Fini les rendez-vous oubliés.</p>
+          <ul><li>Créneaux libres vérifiés</li><li>Déplacer ou annuler par message</li><li>Rappel la veille avec boutons</li><li>Acompte en option</li></ul>
+          <div class="foot"><p class="ask">Tarif sur devis personnalisé</p><a class="link" href="#contact" data-besoin="rendez-vous">Demander →</a></div>
+        </article>
+        <article class="svc" data-flow="reception">
+          <div class="svc-top"><div class="si"><svg class="icon" aria-hidden="true"><use href="#i-chat"/></svg></div><button class="svc-more" type="button" data-flow-open="reception" aria-controls="flow-panel" aria-pressed="false">Voir le fonctionnement <span aria-hidden="true">→</span></button></div>
+          <span class="tag">GhostReception</span>
+          <h3>Assistant clients</h3>
+          <p>Plus aucun message sans réponse sur WhatsApp ou Instagram.</p>
+          <ul><li>Prix, horaires, catalogue exacts</li><li>Derja, arabe et français</li><li>Prospects notés automatiquement</li><li>Relais vers votre équipe</li></ul>
+          <div class="foot"><p class="ask">Tarif sur devis personnalisé</p><a class="link" href="#contact" data-besoin="assistant">Demander →</a></div>
+        </article>
+        <article class="svc" data-flow="travel">
+          <div class="svc-top"><div class="si"><svg class="icon" aria-hidden="true"><use href="#i-plane"/></svg></div><button class="svc-more" type="button" data-flow-open="travel" aria-controls="flow-panel" aria-pressed="false">Voir le fonctionnement <span aria-hidden="true">→</span></button></div>
+          <span class="tag">GhostTravel</span>
+          <h3>Pack Agence de voyage</h3>
+          <p>Chaque voyageur suivi de la première question jusqu'à l'avis Google.</p>
+          <ul><li>Réponses sur vos offres</li><li>Échéances Omra et séjours</li><li>Documents et infos de départ</li><li>Relance des demandes</li></ul>
+          <div class="foot"><p class="ask">Tarif sur devis personnalisé</p><a class="link" href="#contact" data-besoin="voyage">Demander →</a></div>
+        </article>
+        <article class="svc" data-flow="mail">
+          <div class="svc-top"><div class="si"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg></div><button class="svc-more" type="button" data-flow-open="mail" aria-controls="flow-panel" aria-pressed="false">Voir le fonctionnement <span aria-hidden="true">→</span></button></div>
+          <span class="tag">GhostMail</span>
+          <h3>E-mails &amp; Brief du gérant</h3>
+          <p>Votre boîte triée, l'essentiel de la journée en un message.</p>
+          <ul><li>E-mails classés et résumés</li><li>Brouillons de réponse prêts</li><li>Newsletters écartées</li><li>Brief chaque matin</li></ul>
+          <div class="foot"><p class="ask">Tarif sur devis personnalisé</p><a class="link" href="#contact" data-besoin="emails">Demander →</a></div>
+        </article>
+        <article class="svc" data-flow="custom">
+          <div class="svc-top"><div class="si"><svg class="icon" aria-hidden="true"><use href="#i-tool"/></svg></div><button class="svc-more" type="button" data-flow-open="custom" aria-controls="flow-panel" aria-pressed="false">Voir le fonctionnement <span aria-hidden="true">→</span></button></div>
+          <span class="tag">Sur mesure</span>
+          <h3>Votre process</h3>
+          <p>Une tâche répétitive qui n'est pas dans la liste ? On l'étudie.</p>
+          <ul><li>Étude gratuite de 30 min</li><li>Devis fixe sous 48 h</li><li>Livraison documentée</li><li>Formation de votre équipe</li></ul>
+          <div class="foot"><p class="ask">Tarif sur devis personnalisé</p><a class="link" href="#contact" data-besoin="sur-mesure">En parler →</a></div>
+        </article>
+      </div>
+      <p class="note">Les frais d'envoi WhatsApp facturés par Meta sont refacturés au coût réel, sans marge.</p>
+    </div>
+  </section>
+
+  <!-- ===================== MÉTHODE ===================== -->
+  <section id="methode" class="alt">
+    <div class="wrap">
+      <div class="head center reveal">
+        <span class="eyebrow">Notre méthode</span>
+        <h2>Six étapes, du premier appel au suivi mensuel</h2>
+      </div>
+      <ol class="journey reveal">
+        <li class="jstep"><h3>Écouter</h3><p>Un appel pour repérer la tâche qui vous coûte le plus.</p></li>
+        <li class="jstep"><h3>Concevoir</h3><p>Un plan simple et un devis fixe, validés avec vous.</p></li>
+        <li class="jstep"><h3>Installer</h3><p>Connexion à vos outils, import de votre fichier tel qu'il est.</p></li>
+        <li class="jstep"><h3>Tester</h3><p>Mode test : chaque message vous arrive d'abord pour validation.</p></li>
+        <li class="jstep"><h3>Lancer</h3><p>L'automatisation tourne seule ; votre équipe sait l'utiliser.</p></li>
+        <li class="jstep"><h3>Suivre</h3><p>Surveillance, alertes en cas de problème, ajustements chaque mois.</p></li>
+      </ol>
+      <div class="center-cta"><a class="btn btn-ghost" href="#contact">Parler à quelqu'un</a></div>
+    </div>
+  </section>
+
+  <!-- ===================== POURQUOI ===================== -->
+  <section>
+    <div class="wrap">
+      <div class="head reveal"><span class="eyebrow">Pourquoi Ghostprocess</span><h2>Quatre engagements, par écrit</h2></div>
+      <div class="why reveal">
+        <div><h3>Rapide</h3><p>Une automatisation opérationnelle en quelques jours, pas en plusieurs mois.</p></div>
+        <div><h3>Local</h3><p>On connaît vos chèques, vos traites, vos clients et leur derja.</p></div>
+        <div><h3>Transparent</h3><p>Un devis clair et détaillé, frais d'envoi refacturés au coût réel.</p></div>
+        <div><h3>Libre</h3><p>Sans engagement : vos données et vos fichiers restent chez vous.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== PROGRAMME PILOTE ===================== -->
+  <!-- Nombre de places restantes : PILOT_SEATS_LEFT dans assets/js/config.js -->
+  <section id="pilote" style="padding-top:0">
+    <div class="wrap pilot">
+      <div class="pilot-card reveal">
+        <span class="eyebrow">Programme pilote · <span data-seats-left>3 places disponibles</span></span>
+        <h3>3 entreprises accompagnées gratuitement pendant 30 jours</h3>
+        <p class="lead">Mise en place offerte et suivi rapproché, en échange de vos retours honnêtes et, si vous êtes satisfait, d'un témoignage.</p>
+        <div class="seats"><div class="seat"><b>1</b>place libre</div><div class="seat"><b>2</b>place libre</div><div class="seat"><b>3</b>place libre</div></div>
+        <a class="btn btn-primary" href="#contact" data-besoin="pilote">Postuler au programme pilote</a>
+      </div>
+      <div class="empty-wall reveal">
+        <h3>Vos résultats ici</h3>
+        <p>Nous publierons uniquement des témoignages et des chiffres réels de nos clients pilotes. Pas de logos empruntés, pas de statistiques inventées.</p>
+        <a class="link" href="#top">En attendant, essayez les démos →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== SÉCURITÉ ===================== -->
+  <section id="confiance" class="alt">
+    <div class="wrap">
+      <div class="head reveal"><span class="eyebrow">Sécurité &amp; données</span><h2>Vos données restent les vôtres</h2></div>
+      <div class="trust reveal">
+        <div class="tr"><svg class="icon" aria-hidden="true"><use href="#i-shield"/></svg><h3>Chez vous</h3><p>Fichiers et historiques restent dans vos propres comptes Google ou Microsoft.</p></div>
+        <div class="tr"><svg class="icon" aria-hidden="true"><use href="#i-key"/></svg><h3>Accès révocable</h3><p>Accès limités au strict nécessaire, que vous pouvez retirer à tout moment.</p></div>
+        <div class="tr"><svg class="icon" aria-hidden="true"><use href="#i-eye"/></svg><h3>Tout est tracé</h3><p>Chaque message envoyé est enregistré : à qui, quand, quoi.</p></div>
+        <div class="tr"><svg class="icon" aria-hidden="true"><use href="#i-scale"/></svg><h3>Cadre légal</h3><p>Traitement conforme à la loi organique n° 2004-63 sur la protection des données personnelles.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== FAQ ===================== -->
+  <section id="faq">
+    <div class="wrap">
+      <div class="head center reveal"><span class="eyebrow">Questions fréquentes</span><h2>Ce qu'on nous demande avant de commencer</h2></div>
+      <div class="faq reveal">
+        <details><summary>Dois-je changer de logiciel ou de numéro ?</summary><p>Non. Nous partons de votre fichier Excel ou Google Sheets tel qu'il est, de votre boîte e-mail et de votre WhatsApp. Pour WhatsApp, nous vous aidons à activer l'API officielle de Meta sur un numéro dédié.</p></details>
+        <details><summary>L'assistant comprend-il la derja ?</summary><p>Oui : il répond dans la langue du client, en français, en arabe ou en derja, y compris écrite en lettres latines (« 3aslema », « 9adeh », « behi »).</p></details>
+        <details><summary>Et si l'assistant ne sait pas répondre ?</summary><p>Il ne répond qu'avec les informations que vous lui donnez. Pour une réclamation, une question hors sujet ou un client qui veut parler à quelqu'un, il passe la main et vous recevez une alerte immédiate.</p></details>
+        <details><summary>Combien coûtent les messages WhatsApp ?</summary><p>Les réponses à un client qui vient d'écrire sont gratuites dans la limite fixée par Meta. Les rappels et relances sont facturés par Meta selon sa grille officielle ; nous vous les refacturons au coût réel, sans marge.</p></details>
+        <details><summary>Combien de temps pour démarrer ?</summary><p>En général 3 à 5 jours ouvrés après l'appel découverte, dont une phase de test où chaque message vous est d'abord envoyé pour validation.</p></details>
+        <details><summary>Suis-je engagé sur la durée ?</summary><p>Non. L'abonnement est mensuel et sans engagement. Si vous arrêtez, vos fichiers et vos historiques restent dans vos comptes.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== CONTACT ===================== -->
+  <section class="final" id="contact">
+    <div class="wrap final-grid">
+      <div class="reveal">
+        <span class="eyebrow">Appel découverte gratuit</span>
+        <h2>Arrêtez de perdre du temps sur ce qu'une machine fait mieux.</h2>
+        <p class="lead">20 minutes pour identifier votre tâche la plus coûteuse et voir à quoi ressemblerait son automatisation. Sans engagement.</p>
+        <div class="contact-lines">
+          <div class="cline"><span>WhatsApp</span><code id="wa-num" data-wa-number>bientôt disponible</code><a class="btn btn-wa btn-sm" href="#contact" data-wa>Écrire</a></div>
+          <div class="cline"><span>E-mail</span><code id="mail" data-email>team@ghostprocess.net</code><button class="copy" type="button" data-copy="mail">Copier</button></div>
+        </div>
+      </div>
+
+      <!-- Le formulaire envoie un JSON au webhook n8n défini dans assets/js/config.js -->
+      <form class="card" id="contactForm" novalidate>
+        <div class="two">
+          <label for="f-nom">Nom et prénom<input id="f-nom" name="nom" autocomplete="name" required></label>
+          <label for="f-tel">Téléphone (WhatsApp)<input id="f-tel" name="telephone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+216 …" pattern="[+0-9 ()-]{8,20}" required></label>
+        </div>
+        <div class="two">
+          <label for="f-ent">Entreprise <span class="opt">(facultatif)</span><input id="f-ent" name="entreprise" autocomplete="organization"></label>
+          <label for="f-sect">Secteur
+            <select id="f-sect" name="secteur">
+              <option value="">Choisissez</option>
+              <option>Distribution / grossiste</option>
+              <option>Boutique en ligne</option>
+              <option>Services</option>
+              <option>Cabinet comptable</option>
+              <option>Agence de voyage</option>
+              <option>Santé &amp; beauté</option>
+              <option>Autre</option>
+            </select>
+          </label>
+        </div>
+        <label for="f-email">E-mail <span class="opt">(facultatif)</span><input id="f-email" name="email" type="email" autocomplete="email"></label>
+        <label for="f-besoin">Ce qui vous intéresse
+          <select id="f-besoin" name="besoin" required>
+            <option value="" disabled selected>Choisissez</option>
+            <option value="decouverte">Un appel découverte</option>
+            <option value="impayes">Relances d'impayés (GhostCollect)</option>
+            <option value="rendez-vous">Rendez-vous WhatsApp (GhostBook Pro)</option>
+            <option value="assistant">Assistant clients (GhostReception)</option>
+            <option value="voyage">Pack Agence de voyage (GhostTravel)</option>
+            <option value="emails">E-mails &amp; Brief du gérant (GhostMail)</option>
+            <option value="pilote">Programme pilote</option>
+            <option value="sur-mesure">Sur mesure</option>
+          </select>
+        </label>
+        <label for="f-msg">La tâche qui vous fait perdre le plus de temps <span class="opt">(facultatif)</span><textarea id="f-msg" name="message" maxlength="1500" placeholder="Ex. : on relance une soixantaine de factures par mois au téléphone."></textarea></label>
+        <!-- Piège anti-robots : invisible pour les humains -->
+        <label class="hp" aria-hidden="true">Site web<input name="site_web" tabindex="-1" autocomplete="off"></label>
+        <label class="consent" for="f-ok"><input id="f-ok" name="consentement" type="checkbox" required> <span>J'accepte que Ghostprocess utilise ces informations pour me recontacter au sujet de ma demande (<a href="confidentialite.html">politique de confidentialité</a>).</span></label>
+        <button class="btn btn-primary" type="submit" id="f-submit">Réserver mon appel</button>
+        <div class="status" id="f-status" role="status" aria-live="polite" hidden></div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<!-- ===================== PIED DE PAGE ===================== -->
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <a class="brand" href="#top"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3C9.4 3 5 7.8 5 14v14.5l3.6-2.6 3.7 2.6 3.7-2.6 3.7 2.6 3.7-2.6 3.6 2.6V14C27 7.8 22.6 3 16 3z" fill="var(--accent)"/><circle cx="12" cy="14" r="2.1" fill="var(--on-accent)"/><circle cx="20" cy="14" r="2.1" fill="var(--on-accent)"/></svg>Ghostprocess</a>
+        <p class="fnote">L'équipe invisible qui fait tourner les process des PME tunisiennes. Tunis.</p>
+      </div>
+      <div><h4>Solutions</h4><ul><li><a href="#solutions">GhostCollect</a></li><li><a href="#solutions">GhostBook Pro</a></li><li><a href="#solutions">GhostReception</a></li><li><a href="#solutions">GhostTravel</a></li><li><a href="#solutions">GhostMail</a></li></ul></div>
+      <div><h4>Secteurs</h4><ul><li><a href="#cas">Distribution</a></li><li><a href="#cas">Boutiques en ligne</a></li><li><a href="#cas">Cabinets comptables</a></li><li><a href="#cas">Agences de voyage</a></li><li><a href="#cas">Santé &amp; beauté</a></li></ul></div>
+      <div><h4>Contact</h4><ul><li><a href="#contact">Appel découverte</a></li><li><a href="#contact" data-wa>WhatsApp</a></li><li><a href="https://www.instagram.com/ghost_process/" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://www.linkedin.com/company/ghostprocess/" target="_blank" rel="noopener">LinkedIn</a></li><li><a href="mailto:team@ghostprocess.net" data-email>team@ghostprocess.net</a></li></ul></div>
+    </div>
+    <div class="fbottom">
+      <span>© <span data-year>2026</span> Ghostprocess · Tunis, Tunisie</span>
+      <nav aria-label="Liens légaux"><a href="mentions-legales.html">Mentions légales</a><a href="confidentialite.html">Confidentialité</a></nav>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-float" href="#contact" data-wa aria-label="Écrire à Ghostprocess sur WhatsApp"><svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg><span>WhatsApp</span></a>
+<button class="to-top" id="toTop" type="button" aria-label="Retour en haut de la page" title="Retour en haut"><svg class="icon" aria-hidden="true"><use href="#i-arrow-up"/></svg></button>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/demos.js"></script>
+<script src="assets/js/flows.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
