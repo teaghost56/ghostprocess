@@ -1,9 +1,0 @@
-{
-  "liveServer.settings.port": 5500,
-  "liveServer.settings.root": "/",
-  "editor.formatOnSave": false,
-  "editor.tabSize": 2,
-  "files.encoding": "utf8",
-  "html.format.wrapLineLength": 0,
-  "emmet.includeLanguages": { "html": "html" }
-}
