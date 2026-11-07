@@ -1,0 +1,13 @@
+{
+  "name": "Ghostprocess",
+  "short_name": "Ghostprocess",
+  "lang": "fr",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0c110d",
+  "theme_color": "#0c110d",
+  "icons": [
+    { "src": "assets/img/favicon.svg", "sizes": "any", "type": "image/svg+xml" },
+    { "src": "assets/img/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+  ]
+}
